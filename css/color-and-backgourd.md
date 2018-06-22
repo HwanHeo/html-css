@@ -53,11 +53,11 @@ body {
 ```
 HTML: 
 <div class="box"></div>
-<div class="box box--red"></div>
-<div class="box box--blue"></div>
-<div class="box box--images"></div>
-<div class="box box--gradient-linear"></div>
-<div class="box box--gradient-radiel"></div>
+<div class="box box-red"></div>
+<div class="box box-blue"></div>
+<div class="box box-images"></div>
+<div class="box box-gradient-linear"></div>
+<div class="box box-gradient-radiel"></div>
 
 CSS: 
 .box {
@@ -76,11 +76,11 @@ CSS:
   background-color: royalblue;
 }
 
-.box--red {
+.box-red {
   background: crimson;
 }
 
-.box--images {
+.box-images {
   background: url("경로");
   /*
    * 배경을 이미지로 가져오면 배경 이미지는 그대로인데...
@@ -124,7 +124,7 @@ background: url("경로") 0 0 no-repeat #000;
  * 웹에서 gradient는 이미지로써 취급
  * 배경 이미지는 여러개 작성이 가능 (multiple background)
  */
-.box--gradient-linear {
+.box-gradient-linear {
   background: linear-gradient(90deg, royalblue, blue),
     linear-gradient(37deg, red, blue),
     linear-gradient(135deg, green, blue);
@@ -133,7 +133,7 @@ background: url("경로") 0 0 no-repeat #000;
 /*
  * 방사형 gradient
  */
-.box--gradient-radial {
+.box-gradient-radial {
   background: radial-gradient(circle at center, hotpink, red)
 }
 
@@ -166,20 +166,20 @@ CSS:
  * spread - 펼치다
  * shadow color
  */
-.box--shadow {
+.box-shadow {
   box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
 }
 
 /*
  * inset shadow
  */
-.box--inner-shadow {
+.box-inner-shadow {
   box-shadow: inset 5px 5px 20px rgba(0,0,0,0.2);
 }
 /*
  * multi
  */
-.box--multi-shadow {
+.box-multi-shadow {
   box-shadow: 5px 5px 20px rgba(0,0,0,0.2),
     -5px -5px 20px olive;
 }
