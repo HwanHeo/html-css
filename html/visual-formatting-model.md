@@ -4,37 +4,37 @@
 되어있다.
 
 - box dimension과 type
-```
+```html
 <p>사전지식 : box dimension (box model)</p>
-    <!--
-        BLOCK Level은 영역 전체를 차지함
-        BLOCK Level은 box dimension의 영향을 받을 때,
-        height가 콘텐츠의 높이 + padding top + padding-bottom
+<!--
+  BLOCK Level은 영역 전체를 차지함
+  BLOCK Level은 box dimension의 영향을 받을 때,
+  height가 콘텐츠의 높이 + padding top + padding-bottom
 
-        box의 크기 계산법
-        가로너비 : width + padding-left + padding-right + border-left + border-right
-        세로높이 : height + padding-top + padding-bottom + border-top + border-bottom
-        margin은 별도
-    -->
-    <div>치킨 맛있음.</div>
+  box의 크기 계산법
+  가로너비 : width + padding-left + padding-right + border-left + border-right
+  세로높이 : height + padding-top + padding-bottom + border-top + border-bottom
+  margin은 별도
+-->
+<div>치킨 맛있음.</div>
 
-    <!--
-        INLINE LEVEL은 콘텐츠 만큼만 영역을 가짐
-        box의 크기 계산법
-        너비 : content width + padding-left + padding-right + border-left + border-right
-        높이 : line-height
-    -->
-    <span>치킨 맛있음.</span>
+<!--
+  INLINE LEVEL은 콘텐츠 만큼만 영역을 가짐
+  box의 크기 계산법
+  너비 : content width + padding-left + padding-right + border-left + border-right
+  높이 : line-height
+-->
+<span>치킨 맛있음.</span>
 
-    <!--
-        INLINE BLOCK
+<!--
+  INLINE BLOCK
 
-        box 자체는 inline처럼 배치
-        box의 크기 계산법은 block을 따라감
-        버튼 등을 만들 때 inline block을 활용
-    -->
-    <button>전송하기</button>
-    <button>취소</button>
+  box 자체는 inline처럼 배치
+  box의 크기 계산법은 block을 따라감
+  버튼 등을 만들 때 inline block을 활용
+-->
+<button>전송하기</button>
+<button>취소</button>
 ```
 
 - 포지셔닝 스킴
@@ -49,7 +49,7 @@
     - 속성값으로 left 혹은 right 를 가지게 됨
     - clearfix
        - float요소의 containing block이 제대로 높이를 가질 수 있게 하는 테크닉
-```
+```css
 .clearfix::after {
   content: '';
   display: block;
@@ -76,7 +76,7 @@ out-of-flow 상태
 
 
 
-```
+```html
 <h1>박스 생성 제어하기</h1>
 CSS 2.2에서 박스는 크게 두종류
 
