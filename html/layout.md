@@ -61,7 +61,7 @@
   - stretch : 늘여뜨리기 (기본값)
   - space-around : 같은 간격
   - space-between : 양끝정렬
-```
+```css
 /* as-is */
 .container::after {
       content:'';
