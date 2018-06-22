@@ -13,7 +13,7 @@
 - 편해서 많이 사용
 - 컬러 자체에 Alpha값을 포함할 수 없음.
 
-```
+```css
 body {
  color: #FFFFFF; /* 비권장 */
  color: #ffffff; /* 권장 */
@@ -36,13 +36,15 @@ body {
 - L = Lightness
 - A = Alpha
 
-```
-color: hsla(330, 100%, 50%, 1)
+```css
+.color {
+  color: hsla(330, 100%, 50%, 1)
+}
 ```
 
 #### opacity
 - 해당요소 전체를 투명하게 만든다
-```
+```css
 body {
   opacity: 0; /* 투명 */
   opacity: 1; 
@@ -50,16 +52,16 @@ body {
 ```
 
 #### background
-```
-HTML: 
+```html
 <div class="box"></div>
 <div class="box box-red"></div>
 <div class="box box-blue"></div>
 <div class="box box-images"></div>
 <div class="box box-gradient-linear"></div>
 <div class="box box-gradient-radiel"></div>
+```
 
-CSS: 
+```css
 .box {
   float: left;
   width: 150px;
@@ -141,16 +143,16 @@ background: url("경로") 0 0 no-repeat #000;
 
 
 #### Shadow
-```
-HTML: 
+```html
 <div class="box"></div>
-<div class="box box--shadow"></div>
-<div class="box box--inner-shadow"></div>
-<div class="box box--multi-shadow"></div>
+<div class="box box-shadow"></div>
+<div class="box box-inner-shadow"></div>
+<div class="box box-multi-shadow"></div>
 
 <strong>This is good</strong>
+```
 
-CSS: 
+```css
 .box {
   float:left;
   width:150px;
