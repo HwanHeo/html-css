@@ -10,7 +10,7 @@
 ### 문법 및 기본 데이터 타입
 #### 문법
 
-```
+```css
 Basic:
 
 Selector {
@@ -102,7 +102,7 @@ Basic 7: Comment (주석)
 - em의 장점: 폰트사이즈에 비례해서 모든 요소들이 늘거나 줄어야할 때 굉장히 유용
 - em의 단점: 계산하기가 아주 힘듬
 - em은 부모요소와 연관이 있지 않다
-```
+```css
 p {
   font-size: 14px;
   margin: 1em; (14px)
@@ -139,7 +139,7 @@ p {
 - HTML과 동일
 - 해당 속성에 따라서 상대적이라는 표현이 달라짐
 
-```
+```css
 p {
   font-size: 14px;
   line-height: 120%; /* 폰트 사이즈 기준으로 증가 */
@@ -148,7 +148,7 @@ p {
 ```
 #### URL
 - 리소스의 경로
-```
+```css
 p {
   background: url(“https://example.com”)
 }
@@ -172,7 +172,7 @@ URL 에서도 썻음
 ```
 
 #### CSS 유니코드 지정법
-```
+```css
 @charset “UTF-8”;
 -> 한국어로 주석을 달아도 웹사이트에서 깨져보이지 않음
 -> 웹사이트에서 소스코드 보기를 열어서 주석을 열었을 때 깨져보이지 않음.
@@ -329,7 +329,7 @@ Type 7-3: 포커스가 갔을때
 
 #### Inheritance
 - 특정 요소가 부모 요소의 무언가를 상속받고 싶을 때 사용
-```
+```css
 Example: input 요소가 부모요소의 font를 상속받고 싶다면.
 유용한 이유: 스타일을 한꺼번에 수정할때 유용
 
@@ -378,7 +378,7 @@ body p {
   c. Pseudo-class와 다른 셀렉터를 전부(=c)
   d. 요소명과. Pseudo-elements의 갯수(=d)
 
-```
+```css
 li	{} /* a=0, b=0, c=0, d=1 -> 0001 */
 ul li	{} /* a=0, b=0, c=0, d=2 -> 0002 */
 .red	{} /* a=0, b=0, c=1, d=0 -> 0010 */
@@ -397,7 +397,7 @@ li	{}  /* 같은 레벨이면 CSS상에서 하단에 있는게 적용 된다*/
 - `projection`: 프로젝터
 - `tty`: 지금은 AT(Accessibility Technology)로써 활용되기도 함
 
-```
+```css
 @media print {
   /* 프린트 시에만 적용할 CSS */
 }
@@ -422,7 +422,7 @@ li	{}  /* 같은 레벨이면 CSS상에서 하단에 있는게 적용 된다*/
 - 컨텐츠 박스와 border 사이의 영역을 지정하고자 할 때 사용한다.
 - 배경이 투명하지 않다
 - box에 배경색을 넣어주면 padding영역까지 영향을 받는다.
-```
+```css
 p {
   padding: 14px;
   /* 위와 같은 형태의 padding 작성법을 축약형 */
@@ -444,7 +444,7 @@ p {
   - style(선의 형태)
   - color(선의 색생)
 - border도 top, right, bottom, left가 존재한다.
-```
+```css
 p {
   border:1px solid #000000;
   border-top:1px solid #000000;
@@ -479,10 +479,11 @@ p {
 A요소가 margin-bottom 값을 가지고 있고,
 B요소가 margin-top 값을 가지고 있다면,
 둘은 서로 병합됩니다 (큰값으로)
-
-```
+```html
 <div class="a"></div>
 <div class="b"></div>
+```
+```css
 .a {
   margin-bottom: 100px;
 }
