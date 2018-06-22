@@ -30,10 +30,8 @@
   - `radio` 여러개의 값중 단일 선택이 필요시 사용된다
   - `checkbox` 여러개의 값중 다중 선택이 필요시 사용된다
   - `password` 유저가 노출되고 싶지않은 값들 사용시
->  input 요소들은 거의 대부분 모바일에서만 사용된다.
-    데스크탑에선 input type="text"  버전별로 다르고 지원율로 달라서
-    **커스터마이징 불가능 **
-```
+> input 요소들은 거의 대부분 모바일에서만 사용된다. 데스크탑에선 input type="text" 버전별로 다르고 지원율로 달라서 커스터마이징 불가능
+```html
 1. 이 input은 type 속성을 생략하고 있다
 <input>
 
@@ -98,3 +96,304 @@
   - `type=number` 최소값과 최대값을 정의 할 수 있다
 - minlength, maxlength 
   - 입력값에 최소길이와 최대길이를 제한한다
+
+### Input Customizing
+> UX와 관련된 컬러, 움직임등을 디자이너와 함께 guide line을 먼저 정리해둬야한다
+
+- input
+  - `:disabled`, `:readonly`, `:focus`
+- radio, checkbox
+  - `:disabled`, `:checked`
+- button
+  - `:active`, `:hover`, `:disable`
+  
+#### input 
+> 초기화를 먼저 해주고 해당 페이지에 맞는 input을 디자인 하는게 나중에 유지보수에 편하다
+```css
+/* input 초기화 */
+.input {
+      display: inline-block;
+      padding: 0;
+      margin: 0;
+      border: 1px solid #666666;
+      background: none;
+      font: inherit;
+      /*
+       * input type="search"이 모서리가 둥글기 때문에 
+       */
+      border-radius: 0;
+      -webkit-appearance: none;
+      outline: none;
+}
+
+/* input의 required인 placeholder에 컬러를 지정해준다 */ 
+.input[required]::-webkit-input-placeholder {
+      color:red;
+}
+```
+
+#### radio
+> 라디오 버튼은 해당 OS에서 지원하는 형태 그대로 사용을 하여야한다. customizing 이 불가능하기 때문에 디자인을 변경하고 싶으면 blind 코드를 통해 스크린에서 숨긴 후 만들어서 사용한다.
+```html
+<div class="radio">
+    <input id="phone" type="radio" name="payment-method" value="phone" 
+     disabled/>
+    <label for="phone">휴대폰결제</label>
+</div>
+```
+```css
+.radio {
+    position: relative;
+    display: inline-block;
+    padding-left:20px;
+}
+
+/*
+ *  OS에서 제공하는 radio 버튼을 숨긴다
+ *  (blind code)
+ */
+.radio input[type="radio"] {
+    position:absolute;
+    z-index:-1;
+    opacity:0;
+}
+
+/*
+ *  radio 버튼 style outline
+ *  (label 요소 앞에 내용을 생성한다)
+ */
+.radio input[type="radio"] + label:before {
+    content:'';
+    position:absolute;
+    left:0;
+    top:0;
+    display:block;
+    width:15px;
+    height:15px;
+    background:white;
+    border:1px solid #333333;
+    border-radius:50%;
+}
+
+/*
+ *   radio 버튼 안에 생기는 style 
+ *  (label 요소 뒤에 내용을 생성한다)
+ */
+.radio input[type="radio"] + label:after {
+    content:'';
+    position:absolute;
+    left:4px;
+    top:4px;
+    display:block;
+    width:9px;
+    height:9px;
+    background:royalblue;
+    border-radius:50%;
+    transform: scale(0);
+    transition:0.3s all ease;
+}
+
+.radio input[type="radio"]:checked + label:after {
+    transform: scale(1);
+}
+
+.radio input[type="radio"]:checked + label:before {
+    border-color:royalblue;
+}
+
+.radio input[type="radio"]:disabled + label
+.radio input[type="radio"]:disabled + label:before,
+.radio input[type="radio"]:disabled + label:after {
+     opacity:0.4;
+}
+```
+
+#### checkbox
+```html
+<div class="checkbox">
+    <input id="chicken" type="checkbox" name="like" value="닭고기" />
+    <label for="chicken">닭고기</label>
+</div>
+```
+```css
+.checkbox {
+    position: relative;     
+    display: inline-block;
+    padding-left:20px;
+}
+
+/*
+ *  OS에서 제공하는 체크박스를 숨긴다
+ *  (blind code)
+ */
+.checkbox input[type="checkbox"] {
+    position:absolute;
+    z-index:-1;
+    opacity:0;
+}
+
+/*
+ *  label 요소 앞쪽에 가상 체크박스를 생성한다 (outline)
+ *  (blind code)
+ */
+.checkbox input[type="checkbox"] + label:before {
+    content:'';
+    position:absolute;
+    left:0;
+    top:0;
+    display:block;
+    width:15px;
+    height:15px;
+    background:white;
+    border:1px solid #333333;
+}
+
+/*
+ *  label 요소 뒤쪽에 가상 체크박스를 생성한다 (박스안 style)
+ *  (blind code)
+ */
+.checkbox input[type="checkbox"] + label:after {
+    content:'';
+    position:absolute;
+    left:4px;
+    top:4px;
+    display:block;
+    width:9px;
+    height:9px;
+    background:royalblue;
+    transform: scale(0);
+    transition:0.3s all ease;
+}
+
+.checkbox input[type="checkbox"]:checked + label:after {
+    transform: scale(1);
+}
+.checkbox input[type="checkbox"]:checked + label:before {
+    border-color:royalblue;
+}
+.checkbox input[type="checkbox"]:disabled + label,
+.checkbox input[type="checkbox"]:disabled + label:before,
+.checkbox input[type="checkbox"]:disabled + label:after {
+    opacity:0.4;
+}
+
+<!-- toggle  -->
+HTML: 
+<div class="toggle">
+      <input id="safe-number" type="checkbox" name="safe-number">
+      <label for="safe-number">안심번호 사용</label>
+</div>
+
+CSS:
+.toggle {
+    position: relative;
+    display: inline-block;
+    padding-right:40px;
+}
+
+.toggle input[type="checkbox"] {
+    position:absolute;
+    z-index:-1;
+    opacity:0;
+}
+
+.toggle label:before {
+    content:'';
+    position:absolute;
+    right: 0;
+    top:0;
+    display:block;
+    width:30px;
+    height:15px;
+    background:#ffffff;
+    border:1px solid #cccccc;
+    border-radius:14px;
+    transition:0.7s all ease;
+}
+
+.toggle label:after {
+    content:'';
+    display:block;
+    position:absolute;
+    right:15px;
+    top:0px;
+    width:15px;
+    height:15px;
+    background:#ffffff;
+    border:1px solid #cccccc;
+    border-radius:50%;
+    transition:0.3s all ease;
+ }
+.toggle label:hover {
+    cursor: pointer;
+}
+
+.toggle input[type="checkbox"]:checked + label:before {
+    background:#2ac1bc;
+}
+
+.toggle input[type="checkbox"]:checked + label:after {
+    right:0;
+}
+```
+
+#### button
+> input 요소와 마찬가지로 초기화를 먼저 해주고 해당 페이지에 맞는 button 디자인 하는게 나중에 유지보수에 편하다
+```html
+<button type="button" class="btn btn-border">버튼</button>
+<button type="button" class="btn btn-fill btn-submit">버튼</button>
+```
+```css
+/*
+ *  버튼 초기화
+ */
+.btn {
+    display: inline-block;
+     /*  
+      *  font를 inherit 받을 경우 line-height때문에 padding의 위아래  값이 다를 수 있다.
+      *  디테일한 부분을 잡아줘야 한다 
+      */
+    padding:5px 15px 2px;
+    margin:0;
+    border:1px solid transparent;
+
+    background:none;
+    border-radius:none;
+    -webkit-appearance: none;
+
+    font:inherit;
+    text-align:center;
+   /*  outline은 접근성 때문에사용을 권장하나 이상하게생김 */
+    outline: none;
+}
+
+.btn-border {
+    border:1px solid #289a2c;
+}
+
+.btn-border:hover {
+    border:1px solid #289a2c;
+}
+
+.btn-border:active {
+    border:1px solid #289a2c;
+}
+
+.btn-border.btn-submit {
+    color:crimson;
+    border-color:crimson;
+}
+
+.btn-border.btn-submit:hover {
+    border-color:blue;
+}
+
+.btn-fill {
+    background:#eeeeee;
+}
+
+.btn-fill.btn-submit {
+    color:white;
+    background:crimson;
+}
+```
