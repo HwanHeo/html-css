@@ -10,7 +10,7 @@
     - position: relative로 같은 움직임을 구현 할수 있지만 position: relative 는 CPU에서 연산 후 GPU로 오기 때문에 끊킴이 심하다, translate는 GPU 에서만 동작하기 때문에 많은성능을 향상 시킬 수 있다
   - 크기조정 `scale()`
 
-```
+```css
 .skew {
     /* 항상 앞쪽 값이 X고 뒤 값이 Y */
     transform: skew(10px, 10px);
@@ -60,7 +60,7 @@
 - transition-delay
    - trigger 발동 후 몇 초 뒤에 애니메이션을 시작할 것인가?
 
-```
+```css
 /*
  *  transition: <transition-duration>, <transition-property>, <transition-timing-function>
  *  transition-delay: 0.6s;
@@ -117,7 +117,7 @@
 
 - keyframes
  
-```
+```css
 .loading {
   animation: 1s loading ease;
 }
