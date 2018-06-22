@@ -9,7 +9,7 @@
   - CSS의  장점 중 하나인 Cascading을 파괴한다
   - 성능도 좋지 않고, 사용을 비권장 한다.
 
-```
+```css
 /* box-sizing 속성에 한해서만 Universal Selector를 쓰기도 한다 */
 * {
   box-sizing: border-box;
